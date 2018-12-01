@@ -19,17 +19,12 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => {
+    res.send("Invalid page");
+});
 
-app.get('/', (req, res)=>{
-    res.send("GET");
-});
-router.post('/', (req, res, next) => {
-    res.send("POST");
-});
-router.delete('/:id', (req, res, next) => {
-    res.send("DELETE");
-});
 app.use('/bucketlist', bucketlist);
+
 app.listen(port, () => {
     console.log(`Starting the server at port ${port}`);
 })
